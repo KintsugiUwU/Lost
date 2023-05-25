@@ -26,4 +26,17 @@ public class Graphics {
             System.out.println(line);
         }
     }
+    public static void drawSword() {
+        String[] swordArt;
+        swordArt = new String[]{
+                "*",
+                "* *",
+                " * *",
+                "  ***",
+                "    *",
+        };
+        for (String line : swordArt) {
+            System.out.println(line);
+        }
+    }
 }

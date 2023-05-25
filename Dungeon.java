@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Dungeon {
-    static Personaggio giocatore;
+    private Personaggio giocatore;
     static Mostro mostro;
     static int livello;
 
@@ -29,6 +29,7 @@ public class Dungeon {
             livello++;
         } else {
             System.out.println(giocatore.getNome() + " sta combattendo duramente!");
+            Graphics.drawSword();
             mostro.attacca(giocatore);
             if (giocatore.getVita() <= 0) {
                 System.out.println("Sei stato sconfitto...");
@@ -38,7 +39,7 @@ public class Dungeon {
         try {
             Thread.sleep(2000);
         } catch(InterruptedException e) {}
-        System.out.println("");
+        System.out.println("***************************");
         System.out.println("Livello: " + livello);
         System.out.println("Vita di " + giocatore.getNome() + ": " + giocatore.getVita());
         System.out.println("Vita del mostro: "+ mostro.getVita());
@@ -54,7 +55,7 @@ public class Dungeon {
         try {
             Thread.sleep(2000);
         } catch(InterruptedException e) {}
-        System.out.println("");
+        System.out.println("***************************");
         System.out.println("Livello: " + livello);
         System.out.println("Vita di " + giocatore.getNome() + ": " + giocatore.getVita());
         System.out.println("Vita del mostro: "+ mostro.getVita());
@@ -67,6 +68,7 @@ public class Dungeon {
             writer.println(livello);
             writer.println(giocatore.getVita());
             writer.println(giocatore.getAttacco());
+            writer.println(mostro.getVita());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,11 +79,10 @@ public class Dungeon {
             livello = Integer.parseInt(reader.readLine());
             giocatore.setVita(Integer.parseInt(reader.readLine()));
             giocatore.setAttacco(Integer.parseInt(reader.readLine()));
+            mostro.setVita(Integer.parseInt(reader.readLine()));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mostro = generaMostro();
-        mostro.setVita(mostro.getVita()-5);
     }
 
     public static void main(String[] args) {
@@ -91,6 +92,7 @@ public class Dungeon {
 
         while (true) {
             Graphics.drawLostArt();
+            System.out.println("");
             System.out.println("Scegli un'azione:");
             System.out.println("1. Combatti");
             System.out.println("2. Cura");
@@ -118,7 +120,7 @@ public class Dungeon {
                     System.exit(0);
                     break;
                 case 6:
-                    System.out.println("");
+                    System.out.println("***************************");
                     System.out.println("Livello: " + livello);
                     System.out.println("Vita di " + giocatore.getNome() + ": " + giocatore.getVita());
                     System.out.println("Vita del mostro: "+ mostro.getVita());
