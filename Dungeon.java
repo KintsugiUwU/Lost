@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Dungeon {
     private Personaggio giocatore;
-    static Mostro mostro;
+    private Mostro mostro;
     static int livello;
 
     public Dungeon(Personaggio giocatore) {
@@ -15,8 +15,9 @@ public class Dungeon {
         this.livello = 1;
         this.mostro = generaMostro();
     }
+
     public Mostro generaMostro() {
-        return new Mostro("Mostro", 20 + 5 * livello, 5);
+        return new Mostro("Mostro", 20 + 5 * livello,5);
     }
 
     public void combatti() {
@@ -36,15 +37,11 @@ public class Dungeon {
                 System.exit(0);
             }
         }
-        try {
+        try{
             Thread.sleep(2000);
-        } catch(InterruptedException e) {}
-        System.out.println("***************************");
-        System.out.println("Livello: " + livello);
-        System.out.println("Vita di " + giocatore.getNome() + ": " + giocatore.getVita());
-        System.out.println("Vita del mostro: "+ mostro.getVita());
-        System.out.println("Attacco di " + giocatore.getNome() + ": " + giocatore.getAttacco());
-        System.out.println("");
+        } catch(InterruptedException e) {
+        }
+        Status.status(livello, giocatore, mostro);
     }
 
     public void cura() {
@@ -55,12 +52,7 @@ public class Dungeon {
         try {
             Thread.sleep(2000);
         } catch(InterruptedException e) {}
-        System.out.println("***************************");
-        System.out.println("Livello: " + livello);
-        System.out.println("Vita di " + giocatore.getNome() + ": " + giocatore.getVita());
-        System.out.println("Vita del mostro: "+ mostro.getVita());
-        System.out.println("Attacco di " + giocatore.getNome() + ": " + giocatore.getAttacco());
-        System.out.println("");
+        Status.status(livello, giocatore, mostro);
     }
 
     public void salvaLivello(String file) {
@@ -87,7 +79,9 @@ public class Dungeon {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        Personaggio giocatore = new Personaggio("Test", 100, 10);
+        System.out.println("Inserisci il nome del tuo personaggio: ");
+        String nomeGiocatore = input.nextLine();
+        Personaggio giocatore = new Personaggio(nomeGiocatore, 100, 10);
         Dungeon dungeon = new Dungeon(giocatore);
 
         while (true) {
@@ -120,12 +114,7 @@ public class Dungeon {
                     System.exit(0);
                     break;
                 case 6:
-                    System.out.println("***************************");
-                    System.out.println("Livello: " + livello);
-                    System.out.println("Vita di " + giocatore.getNome() + ": " + giocatore.getVita());
-                    System.out.println("Vita del mostro: "+ mostro.getVita());
-                    System.out.println("Attacco di " + giocatore.getNome() + ": " + giocatore.getAttacco());
-                    System.out.println("");
+                    Status.status(dungeon.livello, giocatore, dungeon.mostro);
                     break;
             }
         }

@@ -1,10 +1,11 @@
 public class Status {
-    public static void status() {
-        System.out.println("");
-        System.out.println("Livello: " + Dungeon.livello);
-        System.out.println("Vita di " + Dungeon.giocatore.getNome() + ": " + Dungeon.giocatore.getVita());
-        System.out.println("Vita del mostro: " + Dungeon.mostro.getVita());
-        System.out.println("Attacco di " + Dungeon.giocatore.getNome() + ": " + Dungeon.giocatore.getAttacco());
+
+    public static void status(int livello, Personaggio giocatore, Mostro mostro) {
+        System.out.println("***************************");
+        System.out.println("Livello: " + livello);
+        System.out.println("Vita di " + giocatore.getNome() + ": " + giocatore.getVita());
+        System.out.println("Vita del mostro: "+ mostro.getVita());
+        System.out.println("Attacco di " + giocatore.getNome() + ": " + giocatore.getAttacco());
         System.out.println("");
     }
 }
