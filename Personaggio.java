@@ -7,12 +7,12 @@ public class Personaggio {
     Random random = new Random();
 
 
-    public Personaggio(String nome, int vita, int attacco) {
+    public Personaggio(String nome, int vita, int attacco) { // Costruttore della classe Personaggio
         this.nome = nome;
         this.vita = vita;
         this.attacco = attacco;
     }
-
+    // Metodi getter e setter per le variabili di istanza
     public String getNome() {
         return nome;
     }
@@ -34,11 +34,11 @@ public class Personaggio {
         this.attacco = attacco;
     }
 
-    public void attacca(Personaggio nemico) {
+    public void attacca(Personaggio nemico) { // Metodo che gestisce l'attacco del personaggio nemico
         nemico.setVita(nemico.getVita() - this.attacco);
     }
 
-    public void cura() {
+    public void cura() { // Metodo che gestisce la cura del personaggio
         setVita(getVita()+ random.nextInt(20 - 5 + 1)+5);
     }
 }
